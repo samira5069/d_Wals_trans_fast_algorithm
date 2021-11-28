@@ -1,19 +1,18 @@
 import math
 import random as rand
 import numpy as np
-import d_Wals_trans_fast_algorithm
+import d_Walsh_trans_fast_algorithm as W_alg
 
 
 n = int(input("Введите размерность:"))
 mas = [rand.randint(0, 100) for j in range(2**n)]
 print("Исходный массив:\n",mas)
-mas=d_Wals_trans_fast_algorithm.fast_algoritm(n, mas)
-bit, masd=d_Wals_trans_fast_algorithm.bin_trans_and_bit(n, mas)
-a=d_Wals_trans_fast_algorithm.create_cod_mat(n)
+mas=W_alg.fast_algoritm(n, mas)
+bit, masd=W_alg.bin_trans_and_bit(n, mas)
+a=W_alg.create_cod_mat(n)
 A = np.matrix(a)
 print("Кодовая матрица:\n",A)
-b=d_Wals_trans_fast_algorithm.create_mat_per(n,a)
-B=np.matrix(b)
-number=d_Wals_trans_fast_algorithm.number(n,b)
-bitI, itog=d_Wals_trans_fast_algorithm.permutation(n,number,masd, bit)
+b=W_alg.create_mat_per(n,a)
+number=W_alg.number(n,b)
+bitI, itog=W_alg.permutation(n,number,masd, bit)
 print("Количество бит:\n", bitI,"\nИтоговый результат:\n",itog)
